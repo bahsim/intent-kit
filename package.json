@@ -1,0 +1,34 @@
+{
+  "name": "intent-kit",
+  "version": "3.0.0",
+  "description": "Reusable GitHub Copilot workflow skills with a simple installer",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahsim/intent-kit.git"
+  },
+  "homepage": "https://github.com/bahsim/intent-kit#readme",
+  "bugs": {
+    "url": "https://github.com/bahsim/intent-kit/issues"
+  },
+  "bin": {
+    "intent-kit": "bin/intent-kit.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin",
+    "src",
+    "skills",
+    "instructions",
+    "resources",
+    "README.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "test:word": "python3 -m unittest discover -s resources/word-extraction -p test_extract_word_document.py"
+  }
+}

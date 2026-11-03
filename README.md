@@ -1,0 +1,58 @@
+# Intent Kit
+
+Reusable skills for GitHub Copilot: project discovery, planning, delivery, testing, and documentation.
+The skills guide Copilot to use repository facts, seek approval for plans, and record verification
+evidence. They are instructions, not guarantees of model behavior.
+
+## Install
+
+Requires Node.js 18+ and Git. Run from the root of the Git repository you want to update.
+
+The default `core` bundle installs project-discovery, planning, delivery, and testing skills under
+`.github/skills/` and a backlog guide under `.meta/instructions/`. The `word` bundle also copies its
+tool under `.meta/scripts/word-extraction/`.
+
+Installation only copies kit files. It does **not** run the skills or create project context,
+plans, epics, or `.github/copilot-instructions.md`. Those are created only when you ask Copilot
+to use the relevant skill.
+
+Add optional bundles as needed:
+
+| Bundle | Adds |
+| --- | --- |
+| `e2e` | Playwright UI-testing skill |
+| `docs` | Business-logic documentation skill and audit guide |
+| `word` | Word requirements-extraction skill and tool |
+
+```sh
+# Install core skills
+npx github:bahsim/intent-kit install
+```
+```sh
+# Install core plus optional bundles (comma-separated, no spaces)
+npx github:bahsim/intent-kit install --with e2e,docs
+```
+```sh
+# Or install every optional bundle
+npx github:bahsim/intent-kit install --with all
+```
+
+Choose one install command. Each run installs core plus only the bundles you specify.
+
+Installation overwrites selected kit files, including local edits. Run it again to update them.
+
+Use `--target <path>` to select another project, or `--skills-dir <path>` to change the default
+`.github/skills` destination.
+
+### Next: Initialize Project Context
+
+After installation, invoke the skill in Copilot Chat:
+
+```text
+/meta-init
+```
+
+It inspects the repository and drafts a project context for your approval. In a monorepo, include
+the project name and folder.
+
+For kit development and tests, see [CONTRIBUTING.md](./CONTRIBUTING.md).
