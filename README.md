@@ -71,4 +71,4 @@ After installation, invoke the skill in Copilot Chat:
 It inspects the repository and drafts a project context for your approval. In a monorepo, include
 the project name and folder.
 
-For kit development and tests, see [CONTRIBUTING.md](./CONTRIBUTING.md).
+For kit development and tests, see [CONTRIBUTING.md](./CONTRIBUTING.md) :)
