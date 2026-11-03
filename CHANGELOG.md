@@ -2,6 +2,8 @@
 
 ## 3.0.0
 
+- Added: a standalone user guide adapted from the agentic-approach documentation, with current
+  skill explanations, invocation examples, delivery choices, and evidence boundaries.
 - Changed: install automatically overwrites differing selected kit files, including local edits.
   Every selected file is copied.
 - Removed: `--dry-run`; installation now has only one copy-and-overwrite execution path.

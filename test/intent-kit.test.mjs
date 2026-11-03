@@ -98,6 +98,19 @@ test('kit bundles, skill frontmatter, documentation links, and package contents 
   assert.equal(existsSync(join(kitRoot, 'manifest.json')), false)
 })
 
+test('user guide covers every bundled skill and ships with the package', async () => {
+  const guidePath = 'docs/agentic-approach/README.md'
+  const guide = await readFile(join(kitRoot, guidePath), 'utf8')
+  const readme = await readFile(join(kitRoot, 'README.md'), 'utf8')
+  const pkg = JSON.parse(await readFile(join(kitRoot, 'package.json'), 'utf8'))
+  assert.ok(pkg.files.includes('docs'))
+  assert.ok(readme.includes(`./${guidePath}`))
+  for (const skill of Object.values(bundles).flatMap((bundle) => bundle.skills)) {
+    assert.ok(guide.includes(`../../skills/${skill}/SKILL.md`), `${skill} must have a procedure link`)
+  }
+  assert.doesNotMatch(guide, /pvm-waterfall|pnpm|PROPOSED PROCEDURE|CONCEPT AND PROPOSED ARCHITECTURE/)
+})
+
 const combinations = [
   [], ['e2e'], ['docs'], ['word'], ['e2e', 'docs'], ['e2e', 'word'],
   ['docs', 'word'], ['e2e', 'docs', 'word'], ['all'],

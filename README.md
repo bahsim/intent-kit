@@ -44,6 +44,22 @@ Installation overwrites selected kit files, including local edits. Run it again 
 Use `--target <path>` to select another project, or `--skills-dir <path>` to change the default
 `.github/skills` destination.
 
+## Use the skills
+
+| Task | Skill |
+| --- | --- |
+| Create or refresh project context | `/meta-init` |
+| Plan one change without implementation | `/meta-plan` |
+| Organize several independently shippable goals | `/meta-epic` |
+| Implement a change or execute a plan | `/meta-deliver` |
+| Record validation results | `/meta-testing` |
+| Build or run browser checks | `/meta-e2e` (`e2e` bundle) |
+| Explain business logic from code | `/meta-business-documentation` (`docs` bundle) |
+| Extract and review a Word specification | `/meta-word-extract` (`word` bundle) |
+
+These are task entry points, not required steps. For examples, approval behavior, and how the
+skills work together, read the [user guide](./docs/agentic-approach/README.md).
+
 ### Next: Initialize Project Context
 
 After installation, invoke the skill in Copilot Chat:
