@@ -37,7 +37,7 @@ These are procedure rules, not deterministic enforcement.
 
    | Input | Path |
    | --- | --- |
-   | Names an existing plan or epic, or "next ready plan" | Skip drafting; use the project's verified open-work report if available, otherwise inspect the relevant records, then go to Phase B |
+   | Names an existing plan or epic, or "next ready plan" (find it with `pnpm open:meta`) | Skip drafting; go to Phase B |
    | One cohesive goal | Draft a plan with the [plan skill](../meta-plan/SKILL.md) |
    | Several independently shippable goals | Draft an epic and a plan per goal with the [epic skill](../meta-epic/SKILL.md) |
 
@@ -62,10 +62,17 @@ For a plan, run once; for an epic, repeat for each ready plan in dependency orde
 2. **Re-verify.** Compare Current State with the code today. If stale or changed since approval,
    stop, propose an addendum, and re-approve.
 3. **Implement** surgically, following existing project patterns.
-4. **Verify.** Run the project's relevant checks (never assume a package manager or test suite),
-   including calculation, debug, and equivalent processing paths when behavior changes. Map every
-   acceptance criterion to recorded evidence in the plan's **Verification** section: exact
-   commands, outputs, and gaps. Add a testing record with the
+   When the change affects user-visible behavior, E2E maintenance is part of the implementation:
+   map affected `e2e/COVERAGE.md` IDs, then add, update or delete scenarios, bricks and fixtures
+   with the [e2e skill](../meta-e2e/SKILL.md), without a separate approval or keep/discard
+   question. List these test changes in the plan's scope when drafting it.
+4. **Verify.** Run the narrowest project checks that cover the changed area (never assume a package
+   manager or test suite), including calculation, debug, and equivalent processing paths when
+   behavior changes. Map every acceptance criterion to recorded evidence in the plan's
+   **Verification** section: exact commands, outputs, and gaps. When user-visible behavior changed,
+   run the affected `pnpm e2e --grep` cases by default; do not run the full `pnpm e2e` unless
+   explicitly requested or the change or focused results indicate clear cross-cutting risk. Ask
+   before an otherwise costly full run. A failing related E2E case blocks completion. Add a testing record with the
    [testing skill](../meta-testing/SKILL.md) when the context's testing policy or a cross-layer
    validation calls for one.
 5. **Review.** Before marking done, have an independent review (a code-review subagent or a
@@ -87,7 +94,7 @@ once in one batched question (ask-questions tool when available) to keep or disc
 | Candidate | Proposed home |
 | --- | --- |
 | Project tooling (checker, report, or archive script) | `scripts/` with a `package.json` entry and tests |
-| UI check (Playwright snippet or flow) | `e2e/bricks/` and `e2e/scenarios/`, via the `meta-e2e` skill when it is installed: reuse existing bricks, add only new small ones |
+| UI check (Playwright snippet or flow) | `e2e/bricks/` and `e2e/scenarios/`, via the [e2e skill](../meta-e2e/SKILL.md): reuse existing bricks, add only new small ones. Tests that follow from the delivered feature are part of its scope: keep them without asking; ask only about incidental extras |
 | Portable resource (Excel or Word extractor, converter) | `.meta/scripts/<name>/` with README, requirements, and synthetic tests |
 | Reusable query | `config/queries/` if the app uses it; otherwise `.meta/queries/<topic>.sql` with purpose and source in a header comment, read-only |
 | A repeatable procedure | A new or updated `meta-*` skill |
