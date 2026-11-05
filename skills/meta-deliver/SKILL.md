@@ -80,6 +80,12 @@ For a plan, run once; for an epic, repeat for each ready plan in dependency orde
 8. **Continue or stop.** With `stop-after-each-plan` (or a single plan), report and wait. With
    `continuous`, start the next ready plan only after this one is verified and recorded.
 
+After every plan in an epic is implemented and recorded, but before marking the epic complete,
+run the project's existing scripted E2E check(s) once, using commands verified in project context.
+Do not invoke `/meta-e2e` or substitute manual browser testing for this gate. If the project has no
+browser UI, record the gate as not applicable. If it has a browser UI but no applicable E2E script
+exists, or a script fails, leave the epic incomplete and report the gap or failure.
+
 ## Reusable Artifacts
 Never add files to the repo silently. Classify each candidate, propose a home, and ask the user
 once in one batched question (ask-questions tool when available) to keep or discard each.

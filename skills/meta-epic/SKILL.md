@@ -92,8 +92,9 @@ Open the epic, do not create a second one for the same source.
 ## Completion Marking
 - When a goal ships, set its **Goals** row `Status` to `IMPLEMENTED`; optionally strike through
   the goal text there and in **High-Level Goals**.
-- Keep the header status `IN PROGRESS` while any goal is not implemented; mark it fully complete
-  only when every goal row is `IMPLEMENTED`.
+- Keep the header status `IN PROGRESS` until every goal row is `IMPLEMENTED` and the final E2E
+  gate in the [delivery workflow](../meta-deliver/SKILL.md) passes or is not applicable. Do not run
+  that gate after individual plans.
 - Distinguish local implementation from deployment, release, or business acceptance.
 - Once the epic and every linked plan are finished, use the selected project's verified archival
   process if one is defined to move it to `.meta/epics/_archive/YYYY-MM/`. If the project generates an index of
@@ -106,3 +107,4 @@ Open the epic, do not create a second one for the same source.
 - [ ] Each extracted goal has a verified plan file linked in the table.
 - [ ] Epic-level tickets cover every goal and contain no implementation detail.
 - [ ] Scope approval obtained, and execution cadence resolved (request, context default, or asked), before implementation.
+- [ ] Final E2E gate passed or was recorded as not applicable before marking the epic complete.
