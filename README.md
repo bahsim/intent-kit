@@ -6,7 +6,8 @@ evidence. They are instructions, not guarantees of model behavior.
 
 ## Install
 
-Requires Node.js 18+ and Git. Run from the root of the Git repository you want to update.
+Requires Node.js 18+ and Git. By default, installation targets the Git repository root,
+even when you run the command from a child directory.
 
 The default `core` bundle installs project-discovery, planning, delivery, and testing skills under
 `.github/skills/` and a backlog guide under `.meta/instructions/`. The `word` bundle also copies its
@@ -41,8 +42,16 @@ Choose one install command. Each run installs core plus only the bundles you spe
 
 Installation overwrites selected kit files, including local edits. Run it again to update them.
 
-Use `--target <path>` to select another project, or `--skills-dir <path>` to change the default
-`.github/skills` destination.
+Use `--target <path>` to select a specific project directory inside a Git repository.
+To install into your current directory instead of the repository root (for example, a child
+project in a monorepo):
+
+```sh
+npx github:bahsim/intent-kit install --with all --target .
+```
+
+Use `--skills-dir <path>` to change the default `.github/skills` destination relative to the
+target directory.
 
 ## Use the skills
 
@@ -71,4 +80,4 @@ After installation, invoke the skill in Copilot Chat:
 It inspects the repository and drafts a project context for your approval. In a monorepo, include
 the project name and folder.
 
-For kit development and tests, see [CONTRIBUTING.md](./CONTRIBUTING.md).
+For kit development and tests, see [CONTRIBUTING.md](./CONTRIBUTING.md) :)
