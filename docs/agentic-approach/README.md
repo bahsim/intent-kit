@@ -22,6 +22,8 @@ The links below open the actual procedures, including their templates and limits
 | [meta-e2e](../../skills/meta-e2e/SKILL.md) (`e2e` bundle) | Check browser behavior or improve UI scenario coverage | Reused or new browser checks, execution evidence, and coverage gaps |
 | [meta-business-documentation](../../skills/meta-business-documentation/SKILL.md) (`docs` bundle) | Explain business rules, formulas, or shared processing flows | Documentation checked against the actual implementation |
 | [meta-word-extract](../../skills/meta-word-extract/SKILL.md) (`word` bundle) | Understand a Word specification, including tables and images | Extraction and a source-located review, with inaccessible content identified |
+| [premium-frontend-ui](../../skills/premium-frontend-ui/SKILL.md) (`design` bundle) | Design a polished, accessible frontend that fits the existing project | Project-aligned implementation with relevant checks and constraints |
+| [web-design-reviewer](../../skills/web-design-reviewer/SKILL.md) (`design` bundle) | Review a website's visual, responsive, and accessibility concerns; fix only when requested or approved | Evidence-based findings, with scoped fixes and re-verification when authorized |
 
 [meta-project-context](../../skills/meta-project-context/SKILL.md) is a supporting skill, not a
 user command. Other skills use it to identify the project, destinations, commands, and evidence

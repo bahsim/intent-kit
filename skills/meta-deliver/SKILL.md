@@ -64,7 +64,7 @@ For a plan, run once; for an epic, repeat for each ready plan in dependency orde
 3. **Implement** surgically, following existing project patterns.
    When the change affects user-visible behavior, E2E maintenance is part of the implementation:
    map affected `e2e/COVERAGE.md` IDs, then add, update or delete scenarios, bricks and fixtures
-   with the [e2e skill](../meta-e2e/SKILL.md), without a separate approval or keep/discard
+   with the `meta-e2e` skill, without a separate approval or keep/discard
    question. List these test changes in the plan's scope when drafting it.
 4. **Verify.** Run the narrowest project checks that cover the changed area (never assume a package
    manager or test suite), including calculation, debug, and equivalent processing paths when
@@ -89,9 +89,10 @@ For a plan, run once; for an epic, repeat for each ready plan in dependency orde
 
 After every plan in an epic is implemented and recorded, but before marking the epic complete,
 run the project's existing scripted E2E check(s) once, using commands verified in project context.
-Do not invoke `/meta-e2e` or substitute manual browser testing for this gate. If the project has no
-browser UI, record the gate as not applicable. If it has a browser UI but no applicable E2E script
-exists, or a script fails, leave the epic incomplete and report the gap or failure.
+Do not invoke the separate UI-testing skill or substitute manual browser testing for this gate. If
+the project has no browser UI, record the gate as not applicable. If it has a browser UI but no
+applicable E2E script exists, or a script fails, leave the epic incomplete and report the gap or
+failure.
 
 ## Reusable Artifacts
 Never add files to the repo silently. Classify each candidate, propose a home, and ask the user
@@ -100,7 +101,7 @@ once in one batched question (ask-questions tool when available) to keep or disc
 | Candidate | Proposed home |
 | --- | --- |
 | Project tooling (checker, report, or archive script) | `scripts/` with a `package.json` entry and tests |
-| UI check (Playwright snippet or flow) | `e2e/bricks/` and `e2e/scenarios/`, via the [e2e skill](../meta-e2e/SKILL.md): reuse existing bricks, add only new small ones. Tests that follow from the delivered feature are part of its scope: keep them without asking; ask only about incidental extras |
+| UI check (Playwright snippet or flow) | `e2e/bricks/` and `e2e/scenarios/`, via the `meta-e2e` skill: reuse existing bricks, add only new small ones. Tests that follow from the delivered feature are part of its scope: keep them without asking; ask only about incidental extras |
 | Portable resource (Excel or Word extractor, converter) | `.meta/scripts/<name>/` with README, requirements, and synthetic tests |
 | Reusable query | `config/queries/` if the app uses it; otherwise `.meta/queries/<topic>.sql` with purpose and source in a header comment, read-only |
 | A repeatable procedure | A new or updated `meta-*` skill |

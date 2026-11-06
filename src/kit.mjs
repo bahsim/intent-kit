@@ -30,6 +30,11 @@ export const bundles = {
     instructions: [],
     resources: ['word-extraction'],
   },
+  design: {
+    skills: ['premium-frontend-ui', 'web-design-reviewer'],
+    instructions: [],
+    resources: [],
+  },
 }
 
 export const optionalBundles = Object.keys(bundles).filter((name) => name !== 'core')

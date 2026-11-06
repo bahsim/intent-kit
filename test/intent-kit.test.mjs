@@ -112,14 +112,17 @@ test('user guide covers every bundled skill and ships with the package', async (
 })
 
 const combinations = [
-  [], ['e2e'], ['docs'], ['word'], ['e2e', 'docs'], ['e2e', 'word'],
-  ['docs', 'word'], ['e2e', 'docs', 'word'], ['all'],
+  [], ['e2e'], ['docs'], ['word'], ['design'], ['e2e', 'docs'], ['e2e', 'word'],
+  ['docs', 'word'], ['design', 'e2e'], ['design', 'docs'], ['design', 'word'],
+  ['e2e', 'docs', 'word'], ['all'],
 ]
 for (const extras of combinations) {
   test(`install ${extras.join(',') || 'core'}: exact files and bytes, links resolve, no record or scaffold`, async (t) => {
     const target = await repository(t)
     assertOk(run('install', target, { args: extras.length ? ['--with', extras.join(',')] : [] }))
-    const names = ['core', ...(extras.includes('all') ? ['e2e', 'docs', 'word'] : extras)]
+    const names = ['core', ...(extras.includes('all')
+      ? Object.keys(bundles).filter((name) => name !== 'core')
+      : extras)]
     const expected = await kitFiles(names, '.github/skills')
     assert.deepEqual(await listFiles(target), expected.map((file) => file.targetPath).sort())
     for (const file of expected) {

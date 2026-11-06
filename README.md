@@ -24,14 +24,15 @@ Add optional bundles as needed:
 | `e2e` | Playwright UI-testing skill |
 | `docs` | Business-logic documentation skill and audit guide |
 | `word` | Word requirements-extraction skill and tool |
+| `design` | Premium frontend design and read-only web design review skills |
 
 ```sh
 # Install core skills
 npx github:bahsim/intent-kit install
 ```
 ```sh
-# Install core plus optional bundles (comma-separated, no spaces)
-npx github:bahsim/intent-kit install --with e2e,docs
+# Install core plus selected optional bundles (comma-separated, no spaces)
+npx github:bahsim/intent-kit install --with e2e,docs,design
 ```
 ```sh
 # Or install every optional bundle
@@ -65,6 +66,8 @@ target directory.
 | Build or run browser checks | `/meta-e2e` (`e2e` bundle) |
 | Explain business logic from code | `/meta-business-documentation` (`docs` bundle) |
 | Extract and review a Word specification | `/meta-word-extract` (`word` bundle) |
+| Design a polished frontend | `/premium-frontend-ui` (`design` bundle) |
+| Review a website's visual quality | `/web-design-reviewer` (`design` bundle) |
 
 These are task entry points, not required steps. For examples, approval behavior, and how the
 skills work together, read the [user guide](./docs/agentic-approach/README.md).
